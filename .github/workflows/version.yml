@@ -2,7 +2,7 @@ name: Make V2Ray Up-to-date
 
 on:
   schedule:
-    - cron:  '* 0 * * *'
+    - cron:  "0 0 * * *"
 
 jobs:
   up-to-date:
@@ -18,8 +18,8 @@ jobs:
         if: success()
         run: |
           VER="$(cat version.txt)"
-          git config --global user.name 'iluckyday'
-          git config --global user.email 'luckyday1990@mail.com'
+          git config --global user.name "iluckyday"
+          git config --global user.email "luckyday1990@mail.com"
           git add .
           git commit -m "${VER}"
           git push origin master
