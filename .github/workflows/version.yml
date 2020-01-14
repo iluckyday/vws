@@ -1,18 +1,24 @@
-name: Make V2Ray up-to-date
+name: Make V2Ray Up-to-date
 on: push
 
 jobs:
   push:
     runs-on: ubuntu-latest
+    env:
+      LOCAL_V2RAY_VER: ""
+      REMOTE_V2RAY_VER: ""
     steps:
       - uses: actions/checkout@v2
       - name: compare version
         run: |
-          set -x
           LOCAL_V2RAY_VER="$(cat version.txt)"
           REMOTE_V2RAY_VER="$(wget --no-check-certificate -q -O- https://api.github.com/repos/v2ray/v2ray-core/releases/latest | awk -F'"' '/tag_name/ {print $4}')"
-          [ "$LOCAL_V2RAY_VER" != "$REMOTE_V2RAY_VER" ] && exit 0 || exit 1
+          [ "$LOCAL_V2RAY_VER" != "$REMOTE_V2RAY_VER" ] && echo "$REMOTE_V2RAY_VER" > version.txt && exit 0 || exit 1
       - name: auto commit
         if: success()
         run: |
-          echo gogogo
+          VER="$(cat version.txt)"
+          git config --global user.name 'iluckyday'
+          git config --global user.email 'luckyday1990@mail.com'
+          git commit -m "${VER}"
+          git push origin master
