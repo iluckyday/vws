@@ -7,7 +7,7 @@
     "protocol": "vmess",
     "settings": {
       "clients": [{
-        "id": "c27d19d7-e7bd-ea36-7dcf-4ed4e2ec28ac"
+        "id": "UUID"
       }]
     },
     "streamSettings": {
