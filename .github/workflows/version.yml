@@ -1,8 +1,11 @@
 name: Make V2Ray Up-to-date
-on: push
+
+on:
+  schedule:
+    - cron:  '* 0 * * *'
 
 jobs:
-  push:
+  up-to-date:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

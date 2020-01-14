@@ -11,5 +11,4 @@ RUN set -e; \
 FROM scratch
 
 COPY --from=builder /tmp/v2ray /tmp/v2ctl /tmp/config.json /
-
 CMD ["/v2ray"]
