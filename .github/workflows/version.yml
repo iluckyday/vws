@@ -17,5 +17,6 @@ jobs:
           VER="$(cat version.txt)"
           git config --global user.name 'iluckyday'
           git config --global user.email 'luckyday1990@mail.com'
+          git add .
           git commit -m "${VER}"
           git push origin master
