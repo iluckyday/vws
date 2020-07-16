@@ -1,1 +1,1 @@
-https://api.github.com/repos/v2ray/v2ray-core/releases/28346634
+v4.26.0
